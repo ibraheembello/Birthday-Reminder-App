@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Reminder - Register</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎂 Birthday Reminder</h1>
+      <p>Never miss a birthday celebration!</p>
+    </div>
+
+    <div class="card">
+      <h2>Register Your Birthday</h2>
+
+      <form id="birthdayForm">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            required
+            minlength="2"
+            maxlength="50"
+          >
+          <span class="error" id="usernameError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          >
+          <span class="error" id="emailError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="dateOfBirth">Date of Birth</label>
+          <input
+            type="date"
+            id="dateOfBirth"
+            name="dateOfBirth"
+            required
+            max=""
+          >
+          <span class="error" id="dateOfBirthError"></span>
+        </div>
+
+        <button type="submit" class="btn-submit">Register</button>
+      </form>
+
+      <div id="message" class="message"></div>
+    </div>
+
+    <div class="info-section">
+      <h3>How it works</h3>
+      <ul>
+        <li>📝 Register with your username, email, and date of birth</li>
+        <li>⏰ We'll check for birthdays every day at 7:00 AM</li>
+        <li>📧 Get a special birthday email on your special day!</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="/script.js"></script>
+</body>
+</html>
