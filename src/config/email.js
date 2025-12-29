@@ -1,5 +1,9 @@
 const nodemailer = require('nodemailer');
 
+// Debug: Check if environment variables are loaded
+console.log('Email config - USER:', process.env.EMAIL_USER ? 'SET' : 'NOT SET');
+console.log('Email config - PASS:', process.env.EMAIL_PASS ? 'SET' : 'NOT SET');
+
 // Create email transporter
 const transporter = nodemailer.createTransport({
   service: 'gmail',
