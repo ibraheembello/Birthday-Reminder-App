@@ -1,6 +1,7 @@
 const express = require('express');
 const { body } = require('express-validator');
 const userController = require('../controllers/userController');
+const { checkAndSendBirthdayEmails } = require('../services/birthdayService');
 
 const router = express.Router();
 
@@ -39,5 +40,25 @@ const userValidation = [
 // Routes
 router.post('/users', userValidation, userController.createUser);
 router.get('/users', userController.getAllUsers);
+
+// Test endpoint - manually trigger birthday check
+router.get('/test-birthday-emails', async (req, res) => {
+  try {
+    console.log('Manual birthday check triggered via API');
+    const result = await checkAndSendBirthdayEmails();
+    res.status(200).json({
+      success: true,
+      message: 'Birthday check completed',
+      result: result
+    });
+  } catch (error) {
+    console.error('Birthday check failed:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Birthday check failed',
+      error: error.message
+    });
+  }
+});
 
 module.exports = router;
