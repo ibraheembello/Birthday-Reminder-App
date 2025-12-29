@@ -20,13 +20,17 @@ const transporter = nodemailer.createTransport({
   greetingTimeout: 10000
 });
 
-// Verify transporter configuration
+// Verify transporter configuration (non-blocking)
 transporter.verify((error, success) => {
   if (error) {
-    console.error('Email configuration error:', error.message);
+    console.warn('⚠️  Email service warning:', error.message);
+    console.warn('⚠️  App will continue running. Emails may fail to send.');
+    console.warn('⚠️  This is usually caused by Gmail security blocking the connection.');
   } else {
-    console.log('Email service is ready to send messages');
+    console.log('✅ Email service is ready to send messages');
   }
 });
+
+// Note: We don't throw errors here so the app can start even if email is unreachable
 
 module.exports = transporter;
